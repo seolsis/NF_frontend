@@ -3,27 +3,11 @@ import { signin } from "../../Service/ApiService";
 import { TextField, Grid, Container } from "@material-ui/core";
 import "../../css/Member/Login.css";
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    const email = data.get("email");
-    const password = data.get("password");
-
-    //ApiService의 singin 메소드를 사용해 로그인
-    signin({ email: email, password: password });
-  }
-  render() {
+function Login() {
     return (
       <Container component="main" maxWidth="xs" style={{ marginTop: "8%" }}>
         <div className="login-main-title">로그인</div>
-        <form noValidate onSubmit={this.handleSubmit}>
-          {" "}
+        <form noValidate>
           <Grid container spacing={3}>
             <Grid item xs={10}>
               <TextField
@@ -65,5 +49,5 @@ class Login extends React.Component {
       </Container>
     );
   }
-}
+
 export default Login;
